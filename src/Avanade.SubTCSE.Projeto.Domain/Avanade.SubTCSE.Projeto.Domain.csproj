@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Agreggates\EmployeeRole\Interfaces\Services\" />
-    <Folder Include="Agreggates\EmployeeRole\Interfaces\Repository\" />
     <Folder Include="Agreggates\EmployeeRole\Validators\" />
-    <Folder Include="Agreggates\EmployeeRole\Services\" />
   </ItemGroup>
 
 </Project>
