@@ -2,9 +2,9 @@
 
 namespace Avanade.SubTCSE.Projeto.Domain.Agreggates.EmployeeRole.Validators
 {
-    public class EmployeeRolaValidator : AbstractValidator<Entities.EmployeeRole>
+    public class EmployeeRoleValidator : AbstractValidator<Entities.EmployeeRole>
     {
-        public EmployeeRolaValidator()
+        public EmployeeRoleValidator()
         {
             RuleSet("new", () =>
             {
