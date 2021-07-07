@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Avanade.SubTCSE.Projeto.Data.Repositorys.Base;
+using Avanade.SubTCSE.Projeto.Domain.Agreggates.Employee.Interfaces.Repository;
 
 namespace Avanade.SubTCSE.Projeto.Data.Repositorys.Employee
 {
-    class EmployeeRepository
+    public class EmployeeRepository
+        : BaseRepository<Domain.Agreggates.Employee.Entities.Employee, string>
+        , IEmployeeRepository
     {
+
     }
 }

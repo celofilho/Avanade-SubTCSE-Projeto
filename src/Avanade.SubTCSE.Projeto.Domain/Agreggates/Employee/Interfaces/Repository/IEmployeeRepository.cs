@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Avanade.SubTCSE.Projeto.Domain.Agreggates.Employee.Interfaces.Repository
 {
-    public interface IEmployeeRepository : IBaseRepository<Domain.Agreggates.Employee.Entities.Employee, string>
+    public interface IEmployeeRepository : IBaseRepository<Entities.Employee, string>
     {
        
     }
