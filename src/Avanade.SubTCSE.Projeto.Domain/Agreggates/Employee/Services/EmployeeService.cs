@@ -5,7 +5,7 @@ namespace Avanade.SubTCSE.Projeto.Domain.Agreggates.Employee.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        public async Task<Entities.Employee> AddEmployee(Entities.Employee employee)
+        public async Task<Entities.Employee> AddEmployeeAsync(Entities.Employee employee)
         {
             throw new System.NotImplementedException();
         }

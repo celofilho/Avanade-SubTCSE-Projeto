@@ -1,15 +1,59 @@
-﻿using Avanade.SubTCSE.Projeto.Application.Dtos.EmployeeRole;
+﻿using AutoMapper;
+using Avanade.SubTCSE.Projeto.Application.Dtos.EmployeeRole;
 using Avanade.SubTCSE.Projeto.Application.Interfaces.EmployeeRole;
+using Avanade.SubTCSE.Projeto.Domain.Agreggates.EmployeeRole.Interfaces.Services;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Avanade.SubTCSE.Projeto.Application.Services.EmployeeRole
 {
     public class EmployeeRoleAppService : IEmployeeRoleAppService
     {
+        private readonly IMapper _mapper;
 
-        public Task<EmployeeRoleDto> AddEmployeeRole(EmployeeRoleDto employeeRole)
+        private readonly IEmployeeRoleService _employeeRoleService;
+
+        
+
+        public EmployeeRoleAppService(IMapper mapper, IEmployeeRoleService employeeRoleService)
         {
-            throw new System.NotImplementedException();
+            _mapper = mapper;
+            _employeeRoleService = employeeRoleService;
+        }
+
+        public async Task<EmployeeRoleDto> AddEmployeeRoleAsync(EmployeeRoleDto employeeRole)
+        {
+            //mapear
+            var itemDomain = _mapper.Map<EmployeeRoleDto, Domain.Agreggates.EmployeeRole.Entities.EmployeeRole>(employeeRole);
+
+            //chamar método
+            var item = await _employeeRoleService.AddEmployeeRoleAsync(itemDomain);
+
+            //mapear
+            var itemDto = _mapper.Map<Domain.Agreggates.EmployeeRole.Entities.EmployeeRole,EmployeeRoleDto>(item);
+
+            //devolver
+            return itemDto;
+        }
+
+        public async Task<List<EmployeeRoleDto>> FindAllEmployeeRoleAsync()
+        {
+            var item = await _employeeRoleService.GetAllAsync();
+
+            return  _mapper.Map<List<Domain.Agreggates.EmployeeRole.Entities.EmployeeRole>, List<EmployeeRoleDto>>(item);
+        }
+
+        public async Task<EmployeeRoleDto> GetById(string id)
+        {
+            var item = await _employeeRoleService.GetById(id);
+
+            return _mapper.Map<Domain.Agreggates.EmployeeRole.Entities.EmployeeRole, EmployeeRoleDto>(item);
+        }
+
+
+        public async Task<bool> DeleteById(string id)
+        {
+            return await _employeeRoleService.DeleteById(id);
         }
     }
 }
